@@ -14,12 +14,12 @@ type TimeTerm struct {
 
 // Start は時間帯の開始日時を取得する
 func (t *TimeTerm) Start() time.Time {
-	return t.end.value
+	return t.start.value
 }
 
 // End は時間帯の終了日時を取得する
 func (t *TimeTerm) End() time.Time {
-	return t.start.value
+	return t.end.value
 }
 
 // Seconds は時間帯の秒数を取得する
