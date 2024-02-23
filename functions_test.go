@@ -11,12 +11,12 @@ func TestNewTimeTermJust(t *testing.T) {
 
 	tt, err := NewTimeTermJust(st, et)
 	if err != nil {
-		t.Error("NewTimeTerm Error")
+		t.Error("TestNewTimeTermJust Error")
 	}
 	if !tt.valid ||
 		tt.start.value.Format(time.DateTime) != st.Format(time.DateTime) ||
 		tt.end.value.Format(time.DateTime) != et.Format(time.DateTime) {
-		t.Error("NewTimeTerm Error")
+		t.Error("TestNewTimeTermJust Error")
 	}
 }
 
@@ -40,6 +40,21 @@ func TestNewTimeTerm(t *testing.T) {
 	}
 	if tt2.valid {
 		t.Error("NewTimeTerm Error")
+	}
+}
+
+func TestSeconds(t *testing.T) {
+	st := time.Date(2024, 2, 22, 22, 22, 22, 0, time.Local)
+	et := time.Date(2024, 2, 22, 22, 33, 33, 0, time.Local)
+
+	tt1, _ := NewTimeTermJust(st, et)
+	if tt1.Seconds() != 11*60+11 {
+		t.Error("TestSeconds Error")
+	}
+
+	tt2, _ := NewTimeTermJust(et, st)
+	if tt2.Seconds() != 0 {
+		t.Error("TestSeconds Error")
 	}
 }
 

@@ -22,6 +22,14 @@ func (t *TimeTerm) End() time.Time {
 	return t.start.value
 }
 
+// Seconds は時間帯の秒数を取得する
+func (t *TimeTerm) Seconds() float64 {
+	if !t.valid {
+		return 0
+	}
+	return t.end.value.Sub(t.start.value).Seconds()
+}
+
 // timeState は日時の詳細な状態
 type timeState struct {
 	value time.Time // 日時
