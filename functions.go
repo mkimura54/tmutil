@@ -28,6 +28,12 @@ func AllContains(tts []TimeTerm, t time.Time) bool {
 	return true
 }
 
+// IsDuplicateTerm は2つの時間帯が重なる部分があるかどうかを判定する
+func IsDuplicateTerm(tt1, tt2 TimeTerm) bool {
+	_, ok := DuplicateTerm(tt1, tt2)
+	return ok
+}
+
 // DuplicateTerm は2つの時間帯が重なる部分の時間帯を取得する
 func DuplicateTerm(tt1, tt2 TimeTerm) (TimeTerm, bool) {
 	if !tt1.valid || !tt2.valid {
